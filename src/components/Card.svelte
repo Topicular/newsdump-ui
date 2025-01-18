@@ -42,6 +42,7 @@
 
 <a
   href={`/article/${article_id}`}
+  data-sveltekit-preserve-scroll
   class="border max-h-80 flex flex-col border-[#d0cdcd] p-4 px-5 pt-7 pb-7 hover:border-black transition-all duration-300"
 >
   <div class="text-2xl flex-1 line-clamp-2">{headline}</div>

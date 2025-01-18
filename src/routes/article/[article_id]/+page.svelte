@@ -21,7 +21,31 @@
 
 <Navbar />
 <div class="mx-auto max-w-3xl h-full min-h-screen">
-  <div class="text-4xl mt-16 text-center">{responseData.headline}</div>
+  <!-- svelte-ignore a11y_consider_explicit_label -->
+  <button
+    onclick={() => history.back()}
+    class="text-sm mt-16 mb-10 text-center text-gray-500 flex gap-2 items-center hover:text-black transition-all duration-300"
+  >
+    <div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
+        />
+      </svg>
+    </div>
+    <div class="">Go back</div>
+  </button>
+
+  <div class="text-4xl text-center mt-4">{responseData.headline}</div>
   <div class="flex justify-center items-center gap-2">
     <div class="text-sm text-gray-500 text-center mt-2">
       {moment(responseData.date_of_article).format("DD MMM, YYYY")}
