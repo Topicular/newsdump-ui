@@ -19,8 +19,11 @@
   };
 </script>
 
+<svelte:head>
+  <title>NewsDump | Topicular | {responseData.headline}</title>
+</svelte:head>
 <Navbar />
-<div class="mx-auto max-w-3xl h-full min-h-screen">
+<div class="mx-auto max-w-3xl h-full min-h-screen p-4">
   <!-- svelte-ignore a11y_consider_explicit_label -->
   <button
     onclick={() => history.back()}

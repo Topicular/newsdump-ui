@@ -53,7 +53,7 @@
     <div class="text-purple-800 -mt-1">•</div>
     <p class="text-sm text-gray-500">{topic}</p>
   </div>
-  <p class="py-4 flex-1 opacity-65 text-lg line-clamp-3">{summary}</p>
+  <p class="py-4 flex-1 h-full opacity-65 text-lg line-clamp-3">{summary}</p>
   <div class="mt-auto"></div>
 
   <div class="flex my-4 mb-0 justify-between items-center">
