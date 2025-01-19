@@ -5,27 +5,25 @@
   import Navbar from "../../../components/Navbar.svelte";
   import type { Article } from "../../../types/article";
   import Goback from "../../../components/buttons/Goback.svelte";
-  import Loader from "../../../components/Loader.svelte";
 
   let { data } = $props();
+  console.log(data);
 
   let responseData: Article = {
-    article_id: "1",
-    headline: "Samsung Harman's AI Will Make Cars More Empathetic",
-    summary:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A impedit fugiat modi voluptatibus ut, rerum, eveniet eos, harum sapiente ullam ex dolorum ducimus. Assumenda ullam hic saepe aspernatur nostrum sed?",
-    date_of_article: "2025-01-17",
-    source:
-      "https://www.google.comLorem, ipsum dolor sit amet consectetur adipisicing elit. A impedit fugiat modi voluptatibus ut, rerum, eveniet eos",
-    article_url: "https://www.google.com",
-    author: "John Doe",
+    article_id: data.article_id,
+    headline: data.headline,
+    summary: data.summary,
+    date_of_article: data.date_of_article,
+    source: data.source,
+    article_url: data.article_url,
+    author: data.author,
+    scraped_at: data.scraped_at,
   };
 </script>
 
 <svelte:head>
   <title>NewsDump | Topicular | {responseData.headline}</title>
 </svelte:head>
-<Loader />
 <Navbar />
 <div class="mx-auto max-w-3xl h-full min-h-screen p-4">
   <!-- svelte-ignore a11y_consider_explicit_label -->
@@ -53,6 +51,7 @@
               <th class="text-left text-gray-500 font-medium">Article Link</th>
               <td class="border border-gray-400">
                 <a
+                  data-sveltekit-preload-data="viewport"
                   class="underline line-clamp-1"
                   href={responseData.article_url}
                 >
@@ -63,7 +62,11 @@
             <tr class="border border-gray-400">
               <th class="text-left text-gray-500 font-medium">Source Link</th>
               <td class="border border-gray-400">
-                <a class="underline line-clamp-1" href={responseData.source}>
+                <a
+                  data-sveltekit-preload-data="false"
+                  class="underline line-clamp-1"
+                  href={responseData.source}
+                >
                   {responseData.source}
                 </a>
               </td>

@@ -6,5 +6,6 @@ export interface Article {
   source: string;
   article_url: string;
   author: string;
+  scraped_at: string;
 //   topic: string;
 } 

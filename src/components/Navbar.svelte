@@ -7,7 +7,7 @@
 <div class="flex items-center justify-between gap-2 p-4 py-6">
   <div class="flex items-center gap-2">
     <!-- svelte-ignore a11y_consider_explicit_label -->
-    <a href="/" class="size-7">
+    <a href="/" data-sveltekit-preload-data="viewport" class="size-7">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
@@ -19,7 +19,11 @@
       </svg>
     </a>
     <div class="flex gap-4">
-      <a href="/" class="text-xl font-medium">NewsDump</a>
+      <a
+        href="/"
+        data-sveltekit-preload-data="viewport"
+        class="text-xl font-medium">NewsDump</a
+      >
       <div class=" flex items-center gap-2 text-gray-500">
         <div class="text-sm">by</div>
         <a
@@ -37,11 +41,13 @@
   <div class="hidden lg:flex items-center gap-10">
     <div class="flex items-center gap-8">
       <a
+        data-sveltekit-preload-data="false"
         href="/about"
         class="text-sm {$page.url.pathname === '/about' ? 'underline' : ''}"
         >About</a
       >
       <a
+        data-sveltekit-preload-data="false"
         href="/"
         class="text-sm {$page.url.pathname === '/' ? 'underline' : ''}"
       >
@@ -71,7 +77,9 @@
       tabindex="0"
       class="dropdown-content menu bg-[#d7d2c1] rounded-box z-[1] w-52 p-2 gap-2"
     >
-      <li class="btn"><a href="/about">About NewsDump</a></li>
+      <li class="btn">
+        <a data-sveltekit-preload-data="false" href="/about">About NewsDump</a>
+      </li>
       <li>
         <button class="btn bg-orange-600 text-white">Join the waitlist</button>
       </li>

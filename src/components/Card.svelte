@@ -17,6 +17,7 @@
 <a
   href={`/article/${article_id}`}
   data-sveltekit-preserve-scroll
+  data-sveltekit-preload-data="false"
   class="border flex flex-col border-[#d0cdcd] p-4 px-5 pt-7 pb-7 hover:border-black transition-all duration-300"
 >
   <div class="tooltip text-left" data-tip={headline}>

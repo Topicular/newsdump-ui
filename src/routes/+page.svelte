@@ -15,12 +15,9 @@
 </script>
 
 <Navbar />
-{#if $loadingState}
-  <Loader />
-{:else}
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-    {#each data.data as item}
-      <Card {...item} />
-    {/each}
-  </div>
-{/if}
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+  {#each data.data as item}
+    <Card {...item} />
+  {/each}
+</div>

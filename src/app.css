@@ -7,6 +7,9 @@ body {
   @apply bg-[#E4E1D5] font-sans;
   font-family: "General Sans", sans-serif;
 }
+html {
+  background-color: rgb(228 225 213 / var(--tw-bg-opacity, 1))
+}
 
 h1,
 h2,
