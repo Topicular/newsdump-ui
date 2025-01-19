@@ -25,6 +25,7 @@
 	"dependencies": {
 		"daisyui": "^4.12.23",
 		"moment": "^2.30.1",
-		"svelte-french-toast": "^1.2.0"
+		"svelte-french-toast": "^1.2.0",
+		"wrangler": "^3.103.2"
 	}
 }
