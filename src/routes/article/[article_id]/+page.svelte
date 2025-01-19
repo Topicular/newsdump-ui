@@ -1,17 +1,20 @@
 <svelte:options runes={true} />
 
-<script>
+<script lang="ts">
   import moment from "moment";
   import Navbar from "../../../components/Navbar.svelte";
+  import type { Article } from "../../../types/article";
+  import Goback from "../../../components/buttons/Goback.svelte";
+  import Loader from "../../../components/Loader.svelte";
 
   let { data } = $props();
-  let responseData = {
+
+  let responseData: Article = {
     article_id: "1",
-    headline: "Samsung Harman’s AI Will Make Cars More Empathetic",
+    headline: "Samsung Harman's AI Will Make Cars More Empathetic",
     summary:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A impedit fugiat modi voluptatibus ut, rerum, eveniet eos, harum sapiente ullam ex dolorum ducimus. Assumenda ullam hic saepe aspernatur nostrum sed?",
     date_of_article: "2025-01-17",
-    scraped_at: "2025-01-17",
     source:
       "https://www.google.comLorem, ipsum dolor sit amet consectetur adipisicing elit. A impedit fugiat modi voluptatibus ut, rerum, eveniet eos",
     article_url: "https://www.google.com",
@@ -22,31 +25,11 @@
 <svelte:head>
   <title>NewsDump | Topicular | {responseData.headline}</title>
 </svelte:head>
+<Loader />
 <Navbar />
 <div class="mx-auto max-w-3xl h-full min-h-screen p-4">
   <!-- svelte-ignore a11y_consider_explicit_label -->
-  <button
-    onclick={() => history.back()}
-    class="text-sm mt-16 mb-10 text-center text-gray-500 flex gap-2 items-center hover:text-black transition-all duration-300"
-  >
-    <div>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="size-6"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
-        />
-      </svg>
-    </div>
-    <div class="">Go back</div>
-  </button>
+  <Goback />
 
   <div class="text-4xl text-center mt-4">{responseData.headline}</div>
   <div class="flex justify-center items-center gap-2">
@@ -107,21 +90,6 @@
           </tbody>
         </table>
       </div>
-
-      <!-- <div class="">
-        <span class="opacity-50"> This content was found on </span>
-        <a class="underline max-w-24 truncate" href={responseData.source}>
-          {responseData.source}
-        </a>
-        <span class="opacity-50"> on </span>
-        {moment(responseData.scraped_at).format("DD MMM, YYYY")}.
-        <span class="opacity-50"> The author of this content is </span>
-        {responseData.author}.
-        <span class="opacity-50"> The link to the actual article is </span>
-        <a class="underline max-w-24 truncate" href={responseData.article_url}>
-          {responseData.article_url}
-        </a>
-      </div> -->
     </div>
   </div>
 </div>

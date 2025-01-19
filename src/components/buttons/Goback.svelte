@@ -1,5 +1,12 @@
+<script>
+  function goback() {
+    history.back();
+  }
+</script>
+
+<!-- svelte-ignore a11y_mouse_events_have_key_events -->
 <button
-  onclick={() => history.back()}
+  onclick={goback}
   class="text-sm mt-16 mb-10 text-center text-gray-500 flex gap-2 items-center hover:text-black transition-all duration-300"
 >
   <div>

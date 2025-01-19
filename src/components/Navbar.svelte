@@ -1,7 +1,7 @@
 <svelte:options runes={true} />
 
 <script>
-  import moment from "moment";
+  import { page } from "$app/stores";
 </script>
 
 <div class="flex items-center justify-between gap-2 p-4 py-6">
@@ -33,6 +33,23 @@
       </div>
     </div>
   </div>
+
+  <div class="hidden lg:flex items-center gap-10">
+    <div class="flex items-center gap-8">
+      <a
+        href="/about"
+        class="text-sm {$page.url.pathname === '/about' ? 'underline' : ''}"
+        >About</a
+      >
+      <a
+        href="/"
+        class="text-sm {$page.url.pathname === '/' ? 'underline' : ''}"
+      >
+        Feed
+      </a>
+    </div>
+    <button class="btn bg-orange-600 text-white">Join the waitlist</button>
+  </div>
   <div class="lg:hidden dropdown dropdown-end">
     <div tabindex="0" role="button" class="btn m-1 bg-transparent border-0">
       <svg
@@ -59,9 +76,5 @@
         <button class="btn bg-orange-600 text-white">Join the waitlist</button>
       </li>
     </ul>
-  </div>
-  <div class="hidden lg:flex items-center gap-10">
-    <div class="text-gray-500">{moment().format("DD MMM, YYYY")}</div>
-    <button class="btn bg-orange-600 text-white">Join the waitlist</button>
   </div>
 </div>
