@@ -16,6 +16,9 @@
 
 <Navbar />
 
+<svelte:head>
+  <title>NewsDump | Topicular</title>
+</svelte:head>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
   {#each data.data as item}
     <Card {...item} />
