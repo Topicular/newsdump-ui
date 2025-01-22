@@ -2,12 +2,14 @@
 
 <script>
   import { page } from "$app/stores";
+  import { lastScrapeDate } from "$lib/stores/lastScrape.store";
+  console.log($lastScrapeDate);
 </script>
 
 <div class="flex items-center justify-between gap-2 p-4 py-6">
   <div class="flex items-center gap-2">
     <!-- svelte-ignore a11y_consider_explicit_label -->
-    <a href="/" data-sveltekit-preload-data="viewport" class="size-7">
+    <a href="/" data-sveltekit-preload-data="false" class="size-7">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
@@ -21,7 +23,7 @@
     <div class="flex gap-4">
       <a
         href="/"
-        data-sveltekit-preload-data="viewport"
+        data-sveltekit-preload-data="false"
         class="text-xl font-medium">NewsDump</a
       >
       <div class=" flex items-center gap-2 text-gray-500">
@@ -39,6 +41,11 @@
   </div>
 
   <div class="hidden lg:flex items-center gap-10">
+    <div class="tooltip" data-tip="Last Scraped">
+      <div class="badge badge-outline">
+        {$lastScrapeDate}
+      </div>
+    </div>
     <div class="flex items-center gap-8">
       <a
         data-sveltekit-preload-data="false"
@@ -73,6 +80,7 @@
         />
       </svg>
     </div>
+    <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
     <ul
       tabindex="0"
       class="dropdown-content menu bg-[#d7d2c1] rounded-box z-[1] w-52 p-2 gap-2"

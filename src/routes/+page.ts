@@ -1,10 +1,12 @@
 
 import type { Article } from "../types/article";
 import { loadingState } from "$lib/stores/loading.store";
+import moment from "moment";
+import { lastScrapeDate } from "$lib/stores/lastScrape.store";
 
 export async function load({ fetch }) {
   let data: Article[] = [];
-  await loadingState.set(true);
+  loadingState.set(true);
   const response = await fetch("https://apidump.topicular.com/all_news");
   var response_data: any = await response.json();
   if (
@@ -25,8 +27,15 @@ export async function load({ fetch }) {
           source: item.source,
           article_url: item.link,
           author: item.author,
+          scraped_at : moment(item.created_at).format("MMMM Do YYYY, h:mm:ss a")
       });
     }
+    data.sort((a, b) => { 
+      return moment(b.scraped_at, "MMMM Do YYYY, h:mm:ss a").diff(
+        moment(a.scraped_at, "MMMM Do YYYY, h:mm:ss a")
+      );
+    });
+    lastScrapeDate.set(data[0].scraped_at);
   loadingState.set(false);
   return {
     data,

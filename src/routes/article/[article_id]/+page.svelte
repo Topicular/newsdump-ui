@@ -36,7 +36,7 @@
     </div>
     <div class="text-purple-800 -mb-1">/</div>
     <div class="text-sm text-gray-500 text-center mt-2">
-      {responseData.author}
+      {responseData.author ? responseData.author : "Unknown Author"}
     </div>
   </div>
   <div class="text-lg mt-8">{responseData.summary}</div>
@@ -81,7 +81,7 @@
             <tr class="border border-gray-400">
               <th class="text-left text-gray-500 font-medium">Date Scraped</th>
               <td class="border border-gray-400">
-                {moment(responseData.scraped_at).format("DD MMM, YYYY")}
+                {responseData.scraped_at}
               </td>
             </tr>
             <tr class="border border-gray-400">

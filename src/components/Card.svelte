@@ -2,8 +2,15 @@
   import moment from "moment";
   import type { Article } from "../types/article";
 
-  let { article_id, headline, summary, date_of_article, source, author } =
-    $props();
+  let {
+    article_id,
+    headline,
+    summary,
+    date_of_article,
+    source,
+    author,
+    scraped_at,
+  } = $props();
 
   function getWebsiteName(url: string): string {
     const domain = new URL(url).hostname;
@@ -34,10 +41,18 @@
 
   <div class="mt-auto"></div>
 
-  <div class="flex my-4 mb-0 justify-between items-center">
+  <div class="flex my-4 mb-0 gap-2 justify-between items-center">
     <div>
-      <p class="text-sm text-gray-500 font-semibold">{author}</p>
+      <p class="text-sm text-gray-500 font-semibold">
+        {author ? author : "Unknown"}
+      </p>
       <p class="text-sm text-gray-500">{getWebsiteName(source)}</p>
+    </div>
+    <div class="text-xs text-right text-gray-500">
+      <div class="">Scraped</div>
+      <div class="font-semibold">
+        {moment(scraped_at, "MMMM Do YYYY, h:mm:ss a").fromNow()}
+      </div>
     </div>
   </div>
 </a>
