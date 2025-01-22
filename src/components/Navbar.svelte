@@ -3,7 +3,6 @@
 <script>
   import { page } from "$app/stores";
   import { lastScrapeDate } from "$lib/stores/lastScrape.store";
-  console.log($lastScrapeDate);
 </script>
 
 <div class="flex items-center justify-between gap-2 p-4 py-6">
@@ -42,9 +41,11 @@
 
   <div class="hidden lg:flex items-center gap-10">
     <div class="tooltip" data-tip="Last Scraped">
-      <div class="badge badge-outline">
-        {$lastScrapeDate}
-      </div>
+      {#if $lastScrapeDate}
+        <div class="badge badge-outline">
+          {$lastScrapeDate}
+        </div>
+      {/if}
     </div>
     <div class="flex items-center gap-8">
       <a
