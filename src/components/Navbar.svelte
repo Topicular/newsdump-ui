@@ -8,7 +8,7 @@
 <div class="flex items-center justify-between gap-2 p-4 py-6">
   <div class="flex items-center gap-2">
     <!-- svelte-ignore a11y_consider_explicit_label -->
-    <a href="/" data-sveltekit-preload-data="false" class="size-7">
+    <a href="/" data-sveltekit-preload-data="false" class="size-12 lg:size-7">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
@@ -19,7 +19,7 @@
         />
       </svg>
     </a>
-    <div class="flex gap-4">
+    <div class="flex flex-col lg:flex-row lg:gap-4">
       <a
         href="/"
         data-sveltekit-preload-data="false"
@@ -32,7 +32,7 @@
           href="https://topicular.com"
           class="font-medium flex items-center gap-2"
         >
-          <img src="/logo.png" alt="Topicular" class="size-5" />
+          <img src="/logo.png" alt="Topicular" class="size-4" />
           <div class="-ml-1.5">opicular</div>
         </a>
       </div>

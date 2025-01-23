@@ -30,14 +30,30 @@ export async function load({ fetch }) {
           scraped_at : moment(item.created_at).format("MMMM Do YYYY, h:mm:ss a")
       });
     }
-    data.sort((a, b) => { 
-      return moment(b.scraped_at, "MMMM Do YYYY, h:mm:ss a").diff(
+    const today = moment().startOf('day');
+
+    const { todaysNews, previousNews } = data.reduce(
+      (acc, item) => {
+        const scrapedDate = moment(item.scraped_at, "MMMM Do YYYY, h:mm:ss a");
+        const group = scrapedDate.isSame(today, 'day') ? 'todaysNews' : 'previousNews';
+        acc[group].push(item);
+        return acc;
+      },
+      { todaysNews: [], previousNews: [] }
+    );
+
+    // Sort the groups
+    const sortByDate = (a, b) =>
+      moment(b.scraped_at, "MMMM Do YYYY, h:mm:ss a").diff(
         moment(a.scraped_at, "MMMM Do YYYY, h:mm:ss a")
       );
-    });
-    lastScrapeDate.set(data[0].scraped_at);
-  loadingState.set(false);
+
+    todaysNews.sort(sortByDate);
+    previousNews.sort(sortByDate);
+    lastScrapeDate.set(todaysNews[0].scraped_at);
+    loadingState.set(false);
   return {
-    data,
+    todaysNews,
+    previousNews
   };
 }
