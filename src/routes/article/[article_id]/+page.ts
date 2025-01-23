@@ -11,7 +11,6 @@ export const load: PageLoad = async ({ params, fetch }) => {
   var item = await response.json();
   if (item) {
     item = item.news;
-    console.log(item);
     let data : Article = {
       article_id: item._id,
       headline: item.title,

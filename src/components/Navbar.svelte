@@ -86,6 +86,14 @@
       tabindex="0"
       class="dropdown-content menu bg-[#d7d2c1] rounded-box z-[1] w-52 p-2 gap-2"
     >
+      <li>
+        {#if $lastScrapeDate}
+          <div class="flex flex-col justify-start items-start">
+            <div class="text-xs">Last Scraped at:</div>
+            <div class="font-medium">{$lastScrapeDate}</div>
+          </div>
+        {/if}
+      </li>
       <li class="btn">
         <a data-sveltekit-preload-data="false" href="/about">About NewsDump</a>
       </li>

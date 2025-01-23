@@ -7,8 +7,6 @@
   import Goback from "../../../components/buttons/Goback.svelte";
 
   let { data } = $props();
-  console.log(data);
-
   let responseData: Article = {
     article_id: data.article_id,
     headline: data.headline,
