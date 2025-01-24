@@ -32,7 +32,7 @@ export async function load({ fetch }) {
     }
     const today = moment().startOf('day');
 
-    const { todaysNews, previousNews } = data.reduce(
+    const { todaysNews, previousNews } : {todaysNews : Article[], previousNews : Article[]} = data.reduce(
       (acc, item) => {
         const scrapedDate = moment(item.scraped_at, "MMMM Do YYYY, h:mm:ss a");
         const group = scrapedDate.isSame(today, 'day') ? 'todaysNews' : 'previousNews';
@@ -50,7 +50,12 @@ export async function load({ fetch }) {
 
     todaysNews.sort(sortByDate);
     previousNews.sort(sortByDate);
-    lastScrapeDate.set(todaysNews[0].scraped_at);
+
+    if (Array.isArray(todaysNews) && todaysNews.length > 0 && "scraped_at" in todaysNews[0]) {
+        lastScrapeDate.set(todaysNews[0].scraped_at);
+    } else {
+        lastScrapeDate.set(previousNews[0].scraped_at);
+    }
     loadingState.set(false);
   return {
     todaysNews,
